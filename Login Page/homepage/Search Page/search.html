@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter System</title>
+    <style>
+        /* Updated CSS styling to display results side by side with even spacing */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: left;
+            margin-top: 20px;
+            color: #333;
+            padding-left: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 20px;
+        }
+        .filter {
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .result {
+            position: relative; /* Add relative positioning to the result container */
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start; /* Adjust to keep items side by side */
+            padding: 20px;
+        }
+        .item {
+            width: calc(25% - 10px); /* 4 items per row */
+            margin-bottom: 40px;
+            padding: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            position: relative; /* Add relative positioning for button placement */
+        }
+        /* Smaller divs for results */
+        .item {
+            height: 260px; /* Smaller height */
+            width: 210px; /* Smaller width */
+            margin: 30px 10px 30px 10px; /* Adjust spacing as needed */
+        }
+        .item img {
+            width: 200px; /* Adjust image size */
+            height: 200px; /* Adjust image size */
+        }
+        /* Style anchor tags for the images */
+        .item a {
+            text-decoration: none;
+            color: #333;
+            display: block; /* Make the entire item clickable */
+        }
+        /* Style the upvote button */
+        .upvote-button {
+            position: absolute;
+            bottom: 10px; /* Place it at the bottom */
+            right: 10px; /* Place it at the right */
+            cursor: pointer;
+            transition: 0.3s; /* Add a smooth transition effect */
+            font-size: 24px; /* Adjust the font size for the like symbol */
+            color: red; /* Set the initial color to red */
+        }
+        /* Style the upvote button when it's clicked */
+        .upvote-button.clicked {
+            color: black; /* Make it black when clicked */
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Filter System</h1>
+
+    <!-- Filter section -->
+    <div class="container">
+        <!-- Search bar -->
+        <input class="filter" type="text" id="search" placeholder="Search by name">
+
+        <!-- Dropdown filter labels -->
+        <div class="filter-label">College: </div>
+        <select class="filter" id="filter1">
+            <option value="All">All</option>
+            <option value="college1">JSS Academy Of Technical Education</option>
+            <option value="college2">College 2</option>
+            <option value="college3">College 3</option>
+        </select>
+        <div class="filter-label">Project Status: </div>
+        <select class="filter" id="filter2">
+            <option value="All">All</option>
+            <option value="status1">Active</option>
+            <option value="status2">Completed</option>
+        </select>
+        <div class="filter-label">Category: </div>
+        <select class="filter" id="filter3">
+            <option value="All">All </option>
+            <option value="category1">Software</option>
+            <option value="category2">Hardware</option>
+            <option value="category3">Category3</option>
+            <option value="category4">Category4</option>
+        </select>
+    </div>
+
+    <!-- Result section -->
+    <div class="result" id="result">
+        <!-- Filtered product items will be displayed here -->
+    </div>
+
+    <script>
+        // Sample data (replace with your data)
+        const products = [
+    {
+        name: "Project 1",
+        college: "college1",
+        status: "status1",
+        category: "category1",
+        image: "download.jpeg",
+        link: "https://example.com/link1"
+    },
+    {
+        name: "Project 2",
+        college: "college2",
+        status: "status2",
+        category: "category2",
+        image: "download.jpeg",
+        link: "https://example.com/link2"
+    },
+    {
+        name: "Project 3",
+        college: "college1",
+        status: "status1",
+        category: "category3",
+        image: "download.jpeg",
+        link: "https://example.com/link3"
+    },
+    {
+        name: "Project 4",
+        college: "college3",
+        status: "status1",
+        category: "category2",
+        image: "download.jpeg",
+        link: "https://example.com/link4"
+    },
+    {
+        name: "Project 5",
+        college: "college2",
+        status: "status1",
+        category: "category1",
+        image: "download.jpeg",
+        link: "https://example.com/link5"
+    },
+    // Add more entries as needed
+];
+
+        
+        // Function to filter and display products
+        function filterProducts() {
+            const filterCollege = document.getElementById("filter1").value;
+            const filterStatus = document.getElementById("filter2").value;
+            const filterCategory = document.getElementById("filter3").value;
+            const searchName = document.getElementById("search").value.toLowerCase();
+    
+            const resultContainer = document.getElementById("result");
+            resultContainer.innerHTML = "";
+    
+            products.forEach(product => {
+                if (
+                    (filterCollege === "All" || product.college === filterCollege) &&
+                    (filterStatus === "All" || product.status === filterStatus) &&
+                    (filterCategory === "All" || product.category === filterCategory) &&
+                    (searchName === "" || product.name.toLowerCase().includes(searchName))
+                ) {
+                    // Create a product item
+                    const productItem = document.createElement("div");
+                    productItem.classList.add("item");
+    
+                    // Create an anchor tag for the product image with the link
+                    const productLink = document.createElement("a");
+                    productLink.href = product.link; // Set the link
+                    productLink.target = "_blank"; // Open link in a new tab
+    
+                    // Create an image element
+                    const productImage = document.createElement("img");
+                    productImage.src = product.image;
+    
+                    // Create a text element for the product name
+                    const productName = document.createElement("p");
+                    productName.innerText = product.name;
+    
+                    // Create an upvote button (using a heart symbol)
+                    const upvoteButton = document.createElement("button");
+                    upvoteButton.classList.add("upvote-button");
+                    upvoteButton.innerHTML = "&#x2665;"; // Heart symbol
+                    upvoteButton.style.backgroundColor = "transparent"; // Set initial background color
+                    upvoteButton.style.color = "red"; // Set initial text color
+    
+                    // Handle the upvote button click event
+                    let isUpvoted = false; // Initial state
+                    upvoteButton.addEventListener("click", () => {
+                        if (isUpvoted) {
+                            // If already upvoted, remove the "clicked" class (turn back to original color)
+                            upvoteButton.classList.remove("clicked");
+                            upvoteButton.style.color = "red"; // Set text color back to red
+                        } else {
+                            // If not upvoted, add the "clicked" class (turn black)
+                            upvoteButton.classList.add("clicked");
+                            upvoteButton.style.color = "black"; // Set text color to black
+                        }
+                        isUpvoted = !isUpvoted; // Toggle the state
+                    });
+    
+                    // Append the image and name to the product link
+                    productLink.appendChild(productImage);
+                    productLink.appendChild(productName);
+    
+                    // Append the product link and upvote button to the product item
+                    productItem.appendChild(productLink);
+                    productItem.appendChild(upvoteButton);
+    
+                    // Append product item to the result container
+                    resultContainer.appendChild(productItem);
+                }
+            });
+        }
+    
+        // Initial filtering when the page loads
+        filterProducts();
+    
+        // Attach event listeners to filters and search input
+        const filterElements = document.querySelectorAll(".filter");
+        filterElements.forEach(element => {
+            element.addEventListener("change", filterProducts);
+        });
+    
+        document.getElementById("search").addEventListener("input", filterProducts);
+    </script>
+</body>
+</html>

@@ -5,8 +5,8 @@
 :root {
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --first-color: hsl(244, 75%, 57%);
-  --second-color: hsl(249, 64%, 47%);
+  --first-color: hsla(279.158, 44%, 58%, 1);
+  --second-color: hsla(230, 43%, 51%, 1);
   --title-color: hsl(244, 12%, 12%);
   --text-color: hsl(244, 4%, 36%);
   --body-color: hsl(208, 97%, 85%);
@@ -36,8 +36,25 @@
   margin: 0;
 }
 
+.project-que {
+  font-family: Arial, sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  background: white;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
 body {
-  background-color: var(--body-color);
+  /* background-color: var(--body-color); */
+  background-image: url("img6.jpg");
+  background-size:cover;
+  background-color:#1f2641;
   font-family: var(--body-font);
   color: var(--text-color);
 }
@@ -174,7 +191,7 @@ img {
   color: #fff;
   font-size: var(--small-font-size);
   font-weight: var(--font-semi-bold);
-  box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5);
+  box-shadow: 0 6px 24px hsla(229.541, 44%, 49%, 1);
   margin-bottom: 1rem;
   cursor: pointer;
 }

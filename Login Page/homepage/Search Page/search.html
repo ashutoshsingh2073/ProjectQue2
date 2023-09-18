@@ -8,18 +8,19 @@
         /* Updated CSS styling to display results side by side with even spacing */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #1f2641;
             margin: 0;
             padding: 0;
         }
         h1 {
-            text-align: left;
+            text-align: center;
             margin-top: 20px;
-            color: #333;
+            color: white;
             padding-left: 20px;
         }
         .container {
             display: flex;
+            justify-content: space-around;
             flex-direction: row;
             align-items: center;
             padding: 20px;
@@ -29,14 +30,21 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #fff;
+            background-color:grey;
+            color:white;
+        }
+        ::placeholder{
+            color:white;
+        }
+        .filter-label{
+            color:white;
         }
         .result {
             position: relative; /* Add relative positioning to the result container */
             width: 100%;
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start; /* Adjust to keep items side by side */
+            justify-content: space-between; /* Adjust to keep items side by side */
             padding: 20px;
         }
         .item {
@@ -45,25 +53,29 @@
             padding: 40px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #fff;
+            background-color:grey;
             text-align: center;
             position: relative; /* Add relative positioning for button placement */
         }
         /* Smaller divs for results */
         .item {
-            height: 260px; /* Smaller height */
+            height: 230px; /* Smaller height */
             width: 210px; /* Smaller width */
             margin: 30px 10px 30px 10px; /* Adjust spacing as needed */
+            filter:drop-shadow(15px 15px 5px white);
+            
         }
         .item img {
             width: 200px; /* Adjust image size */
             height: 200px; /* Adjust image size */
+            filter:drop-shadow(20px 20px 10px green);
         }
         /* Style anchor tags for the images */
         .item a {
             text-decoration: none;
-            color: #333;
+            color: white;
             display: block; /* Make the entire item clickable */
+            font-size:1.2rem;
         }
         /* Style the upvote button */
         .upvote-button {
@@ -79,10 +91,16 @@
         .upvote-button.clicked {
             color: black; /* Make it black when clicked */
         }
+        .head{
+            border:1px solid white;
+            background-color: green;
+        }
     </style>
 </head>
 <body>
-    <h1>Explore Projects</h1>
+    <div class="head">
+    <h1>Product Filter System</h1>
+    </div>
 
     <!-- Filter section -->
     <div class="container">
@@ -122,43 +140,43 @@
         // Sample data (replace with your data)
         const products = [
     {
-        name: "Project 1",
+        name: "Product Landing Page",
         college: "college1",
         status: "status1",
         category: "category1",
-        image: "download.jpeg",
+        image: "product.png",
         link: "https://example.com/link1"
     },
     {
-        name: "Project 2",
+        name: "Restaurant Website",
         college: "college2",
         status: "status2",
         category: "category2",
-        image: "download.jpeg",
+        image: "restaurant.png",
         link: "https://example.com/link2"
     },
     {
-        name: "Project 3",
+        name: "Voting System",
         college: "college1",
         status: "status1",
         category: "category3",
-        image: "download.jpeg",
+        image: "voting .png",
         link: "https://example.com/link3"
     },
     {
-        name: "Project 4",
+        name: "Home Value Prediction Project",
         college: "college3",
         status: "status1",
         category: "category2",
-        image: "download.jpeg",
+        image: "home .png",
         link: "https://example.com/link4"
     },
     {
-        name: "Project 5",
+        name: "Line Follower Project",
         college: "college2",
         status: "status1",
         category: "category1",
-        image: "download.jpeg",
+        image: "line_follower.jpeg",
         link: "https://example.com/link5"
     },
     // Add more entries as needed

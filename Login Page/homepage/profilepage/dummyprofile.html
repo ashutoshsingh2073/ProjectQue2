@@ -24,9 +24,26 @@
 	<div class="container" id="wrapper">
 		<div class="row">
 			<div class="col-md-3" id="sidebar">
+				
+				
+					<a href="../homepage.html">
+						<button class="btn btn-secondary rounded-circle" style="position: absolute; top: 1px; left: 1px; z-index: 9999;">
+							<i class="fas fa-arrow-left"></i>
+						</button>
+					</a>
+				
+
 				<div class="logo">
 					<img src="img/pfavatar.png" height="50px" width="50px" alt="profile pic">
+					
+					<!-- Add Friend -->
+					<p><button id="addButton" onclick="toggleAddRequested()" width="20px">Add</button></p>
+					
 				</div>
+				<!-- <p>
+					 Add this inside the <div class="logo"> </div>
+					<button id="addButton" onclick="toggleAddRequested()">Add</button>
+				</p> -->
 				<ul class="nav flex-column">
 					<li class="nav-item">						 
 						<a class="nav-link" href="me.html"><i class="fal fa-home-alt"></i>Profile</a>
@@ -81,6 +98,13 @@
 								</div>
 							</div>					
 						</div>
+						<div id="chat-button">
+							<a href="your_chat_page.html">
+								<button class="btn btn-primary rounded-circle">
+									<i class="fas fa-comments"></i>
+								</button>
+							</a>
+						</div>
 					</div> <!-- Content Section End -->
 					<div class="footer">
 						<div class="row">													
@@ -90,7 +114,7 @@
 									<a href="https://github.com/" target="_blank">
 										<i class="fas fa-globe"></i> GitHub
 									</a>
-									<a href="mailto:dragneeln949@gmail.com" target="_blank">
+									<a href="mailto:mehrotra6975.ashutosh@gmail.com" target="_blank">
 										<i class="fal fa-envelope"></i> Gmail
 									</a>
 									<a href="https://www.linkedin.com/in/ashutosh-mehrotra-591973225/" target="_blank">
@@ -104,6 +128,15 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- <div id="chat-button">
+		<a href="your_chat_page.html">
+			<button class="btn btn-primary rounded-circle">
+				<i class="fas fa-comments"></i>
+			</button>
+		</a>
+	</div> -->
+	
 
 	<!-- JS Script Files -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

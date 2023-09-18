@@ -44,10 +44,24 @@ const showHiddenPass = (inputPass, inputIcon) =>{
          alert('Invalid username or password. Please try again.');
      }
  }
+
+
+// Function to handle login attempts
+const handle2Login = () => {
+   const newPageURL2 = 'signup.html';
+   window.open(newPageURL2, '_blank');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('signupbutton').addEventListener('click', handle2Login);
+    document.getElementById('loginbuttonid').addEventListener('click', handleLogin);
+   
+});
+
+
+
  showHiddenPass('input-pass','input-icon')
- document.addEventListener('DOMContentLoaded', () => {
-     document.getElementById('loginbuttonid').addEventListener('click', handleLogin);
- });
+
  
 
  

@@ -25,3 +25,18 @@ faqs.forEach(faq=>{
     })
 })
 
+document.addEventListener("DOMContentLoaded", function() {
+    const scrollToTopButton = document.getElementById("scroll-to-top-btn");
+
+    // Add a click event listener to the anchor tag
+    scrollToTopButton.addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Scroll to the top of the page smoothly
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
+

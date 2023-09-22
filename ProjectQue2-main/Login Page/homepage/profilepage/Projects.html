@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Meta Tags -->
+	<meta charset="UTF-8">
+	<meta name="description" content="KM Online Works">
+	<meta name="keywords" content="KM Online Works">
+	<meta name="author" content="Kamran Mubarik">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- CSS Links -->
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<title>Projects</title>
+</head>
+<body onload="preloader()">
+	<div id="preloader">
+		<div class="lds-ripple">
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="container" id="wrapper">
+		<div class="row">
+			<div class="col-md-3" id="sidebar">
+
+				<a href="me.html">
+					<button class="btn btn-secondary rounded-circle" style="position: absolute; top: 1px; left: 1px; z-index: 9999;">
+						<i class="fas fa-arrow-left"></i>
+					</button>
+				</a>
+
+				<div class="logo">
+					<img src="img/pfavatar.png" height="50px" width="50px" alt="profile pic">
+				</div>
+				<ul class="nav flex-column">
+					<li class="nav-item">						 
+						<a class="nav-link" href="me.html"><i class="fal fa-home-alt"></i>Profile</a>
+					</li>
+					<li class="nav-item">						 
+						<a class="nav-link" href="Projects.html"><i class="fal fa-tasks"></i>Projects</a>
+					</li>
+					<!-- <li class="nav-item">
+						<a class="nav-link" href="skill.html"><i class="fal fa-info"></i> Skills</a>
+					</li> -->
+					
+				</ul>
+				<i class="far fa-ellipsis-v"></i>
+			</div>
+			<div class="col-md-9">
+				<div id="main-area">
+					<div class="header-section">
+						
+					</div> <!--Header Section End -->
+					<div class="content-section">
+						<div class="section-heading">
+							<h2 class="display-4">Projects <i class="fal fa-tasks small"></i></h2>
+				
+						</div>						
+						<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+						    	<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+						    	<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+						    	<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+							</ol>
+						  	<div class="carousel-inner">
+							    <div class="carousel-item active">
+							    	<div class="row">
+								    	<div class="col-md-4">
+											<div class="card" style="width: 100%;">
+												<a href="project1.html">
+													<img class="card-img-top d-block w-100" src="img/eyesoncar.jpg" alt="Card image cap" height="150px" width="60px">
+												</a>
+												<div class="card-body ">
+													<h5 class="card-text text-truncate">
+														Project 1
+													</h5>
+											  	</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="card" style="width: 100%;">
+												<a href="project2.html">
+													<img class="card-img-top d-block w-100" src="img/imagecompress.jpg" alt="Card image cap" height="150px" width="60px">
+												</a>
+												<div class="card-body ">
+													<h5 class="card-text text-truncate">
+														Project 2
+													</h5>
+											  	</div>
+											</div>
+										</div>
+										<div>
+											
+											<!-- Inside the content-section of Projects.html -->
+											<button class="btn btn-primary" onclick="window.location.href='addproject.html'">Add Project</button>
+
+										</div>										
+									</div>
+							    </div>
+						  	</div>
+						</div>
+					</div> <!-- Content Section End -->
+					
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<!-- JS Script Files -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/custom-function.js"></script>
+</body>
+</html>

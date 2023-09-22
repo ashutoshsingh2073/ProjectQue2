@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Forum</title>
+    <style>
+        /* Updated CSS styles with colors */
+        body {
+            font-family: Arial, sans-serif;
+            background-color:#1f2641;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color:darkblue;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Center vertically */
+        }
+        .heading{
+            border:1px solid white;
+            background-color:blueviolet;
+            margin-bottom: 1rem;
+        }
+        .heading h1{
+            color:white;
+        }
+        .navbar h1 {
+            margin: 0;
+            color:white;
+        }
+        .navbar-links {
+            text-align: right; /* Align links to the right */
+            margin-right: 20px; /* Add some right margin to the links */
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            display: inline-block; /* Display links in a horizontal layout */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto; /* Center the container horizontally */
+            padding: 20px;
+            background-color:lightblue;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color:#333;
+            text-align: center;
+        }
+        .question {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            /* background-color: #9AA4BA; */
+            background-color: #1f2641;
+            border-radius: 5px;
+        }
+        .question h2 {
+            color: #fff;
+        }
+        .question p {
+            color: #555;
+        }
+        .reply {
+            margin-left: 20px;
+            border-left: 2px solid #ccc;
+            padding-left: 10px;
+            color: white;
+        }
+        .ask-button {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff; /* Blue color for the button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .ask-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        #question-input, #reply-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .reply-button {
+            background-color: #007bff; /* Blue color for the button */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .reply-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .full-height {
+            height: calc(100vh - 20px); /* Set the height to fill the viewport vertically minus some margin */
+        }
+        #new-question h2{
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>ProjectQue</h1>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </div>
+    <div class="container full-height"> <!-- Use the "full-height" class here -->
+        <div class="heading">
+            <h1>Discussion Forum</h1>
+        </div>
+        
+        <div id="questions">
+            <!-- Questions and replies go here -->
+        </div>
+        <div id="new-question">
+            <h2>Post a Question</h2>
+            <input type="text" id="question-input" placeholder="Your question">
+            <button id="ask-button" class="ask-button">Ask</button>
+        </div>
+    </div>
+
+    <script>
+        // Dummy data for questions and replies
+        const dummyData = [
+            {
+                question: "How to learn JavaScript?",
+                replies: ["You can start with online courses like Codecademy.", "Practice coding regularly."],
+            },
+            {
+                question: "Best web development frameworks?",
+                replies: ["React and Angular are popular choices.", "It depends on your project requirements."],
+            },
+            {
+                question: "What are the basics of HTML?",
+                replies: ["HTML stands for HyperText Markup Language.", "It is used for creating web pages."],
+            },
+          /*  {
+                question: "How to style web pages with CSS?",
+                replies: ["CSS (Cascading Style Sheets) is used for styling web pages.", "You can apply styles to HTML elements."],
+            },
+            {
+                question: "What is the role of a web developer?",
+                replies: ["Web developers build and maintain websites.", "They work with HTML, CSS, and JavaScript."],
+            },*/
+        ];
+
+        // Function to display questions and replies
+        function displayQuestions() {
+            const questionsDiv = document.getElementById("questions");
+            questionsDiv.innerHTML = "";
+
+            dummyData.forEach((data, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.classList.add("question");
+
+                const questionTitle = document.createElement("h2");
+                questionTitle.textContent = `Question ${index + 1}: ${data.question}`;
+
+                questionDiv.appendChild(questionTitle);
+
+                data.replies.forEach((reply, replyIndex) => {
+                    const replyDiv = document.createElement("div");
+                    replyDiv.classList.add("reply");
+                    replyDiv.textContent = `Reply ${replyIndex + 1}: ${reply}`;
+                    questionDiv.appendChild(replyDiv);
+                });
+
+                const replyInput = document.createElement("input");
+                replyInput.setAttribute("type", "text");
+                replyInput.setAttribute("placeholder", "Your reply");
+                replyInput.classList.add("reply-input");
+
+                const replyButton = document.createElement("button");
+                replyButton.textContent = "Reply";
+                replyButton.classList.add("reply-button");
+
+                replyButton.addEventListener("click", () => {
+                    const newReply = replyInput.value.trim();
+                    if (newReply) {
+                        dummyData[index].replies.push(newReply);
+                        replyInput.value = "";
+                        displayQuestions();
+                    }
+                });
+
+                questionDiv.appendChild(replyInput);
+                questionDiv.appendChild(replyButton);
+
+                questionsDiv.appendChild(questionDiv);
+            });
+        }
+
+        // Function to add a new question
+        function addQuestion() {
+            const questionInput = document.getElementById("question-input");
+            const newQuestion = questionInput.value.trim();
+            
+            if (newQuestion) {
+                dummyData.push({ question: newQuestion, replies: [] });
+                questionInput.value = "";
+                displayQuestions();
+            }
+        }
+
+        // Attach event listener to the "Ask" button
+        const askButton = document.getElementById("ask-button");
+        askButton.addEventListener("click", addQuestion);
+
+        // Display initial questions
+        displayQuestions();
+    </script>
+    <!-- The End -->
+</body>
+</html>
